@@ -10,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserValidation } from "@/lib/validations/user";
@@ -57,8 +58,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           control={form.control}
           name="profile_photo"
           render={({ field }) => (
-            <FormItem className="flex items-cter gap-4">
-              <FormLabel className="account-form_image-label">
+            <FormItem className="flex items-center gap-3 w-full">
+              <FormLabel className="text-base-semibold text-light-2">
                 {field.value ? (
                   <Image
                     src={field.value}
@@ -78,13 +79,69 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                     />
                 )}
                 </FormLabel>
-              <FormControl className="flex-1 text-base-semibold text-gray-200">
+                <FormControl className="flex-1 text-base-semibold text-gray-200">
                 <Input
                 type="file"
                 accept="image/*"
                 placeholder="Upload a photo"
                 className="account-form_image-input"
                 onChange={(e) => handleImage(e, field.onChange)}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-4">
+              <FormLabel className="account-form_image-label">
+                Name
+                </FormLabel>
+                <FormControl className="flex-1 text-base-semibold text-gray-200">
+                <Input
+                type="text"
+                placeholder="Leigh Inna Jamolin"
+                className="account-form_input no-focus"
+                {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-4">
+              <FormLabel className="account-form_image-label">
+                Username
+                </FormLabel>
+                <FormControl className="flex-1 text-base-semibold text-gray-200">
+                <Input
+                type="text"
+                placeholder="Leigh Inna Jamolin"
+                className="account-form_input no-focus"
+                {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="bio"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-4">
+              <FormLabel className="account-form_image-label">
+                Bio
+                </FormLabel>
+                <FormControl className="flex-1 text-base-semibold text-gray-200">
+                <Textarea
+                rows={10}
+                className="account-form_input no-focus"
+                {...field}
                 />
               </FormControl>
             </FormItem>
